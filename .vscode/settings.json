@@ -1,0 +1,8 @@
+{
+    "files.associations": {
+        "wx-display.h": "c",
+        "system_error": "c",
+        "paths.h": "c",
+        "random": "c"
+    }
+}

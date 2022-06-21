@@ -20,6 +20,7 @@ set(PCEM_PRIVATE_API ${PCEM_PRIVATE_API}
         ${CMAKE_SOURCE_DIR}/includes/private/timer.h
         )
 
+include(${CMAKE_CURRENT_SOURCE_DIR}/sdl/sdl.cmake)
 include(${CMAKE_CURRENT_SOURCE_DIR}/bus/bus.cmake)
 include(${CMAKE_CURRENT_SOURCE_DIR}/cdrom/cdrom.cmake)
 include(${CMAKE_CURRENT_SOURCE_DIR}/codegen/codegen.cmake)
@@ -44,7 +45,10 @@ endif()
 include(${CMAKE_CURRENT_SOURCE_DIR}/scsi/scsi.cmake)
 include(${CMAKE_CURRENT_SOURCE_DIR}/sound/sound.cmake)
 include(${CMAKE_CURRENT_SOURCE_DIR}/video/video.cmake)
-include(${CMAKE_CURRENT_SOURCE_DIR}/wx-ui/wx-ui.cmake)
+
+if(PCEM_GUI_MODE STREQUAL "SDL")
+        include(${CMAKE_CURRENT_SOURCE_DIR}/gui/sdl/sdl.cmake)
+endif()
 
 set(PCEM_SRC ${PCEM_SRC}
         fdi2raw.c
@@ -56,9 +60,10 @@ set(PCEM_SRC ${PCEM_SRC}
         rtc.c
         rtc_tc8521.c
         timer.c
+        thread.c
         )
 
-set(PCEM_LIBRARIES ${wxWidgets_LIBRARIES} ${SDL2_LIBRARIES} ${OPENAL_LIBRARY} ${OPENGL_LIBRARIES} ${PCEM_ADDITIONAL_LIBS})
+set(PCEM_LIBRARIES ${SDL2_LIBRARIES} ${OPENAL_LIBRARY} ${OPENGL_LIBRARIES} ${PCEM_ADDITIONAL_LIBS} pthread)
 
 include(${CMAKE_CURRENT_SOURCE_DIR}/plugin-api/plugin-api.cmake)
 

@@ -14,10 +14,12 @@ You can submit patches on our [forum](https://pcem-emulator.co.uk/phpBB3). Befor
 
 You will need the following libraries and buildtools (and their dependencies):
 - SDL2
-- wxWidgets 3.x
+- Boost
 - OpenAL
 - CMake
 - Ninja (Recommended, but you can use a Makefile generator if you prefer)
+
+Depending on which GUI Library you are building, you may need Qt as well
 
 Open a terminal window, navigate to the PCem directory then enter:
 ### Linux/BSD
@@ -44,6 +46,8 @@ configure options are :
   -DUSE_PCAP_NETWORKING=ON   : Build with pcap networking support. (Needs USE_NETWORKING to compile) Requires libpcap.
   -DUSE_ALSA=OFF             : Build with support for MIDI output through ALSA. Requires libasound. (Linux Only)
   -DPLUGIN_ENGINE=OFF        : Build with plugin support. Builds libpcem-plugin-api and links PCem with it.
+  -DPCEM_GUI_MODE=SDL        : What GUI to build with PCem. The following is supported
+    * SDL       : SDL means only SDL mode, no configuration GUI will be included. You will launch a config with the command line
 ```
 
 If you are using -DCMAKE_BUILD_TYPE=Debug, there are some more debug options you can enable if needed

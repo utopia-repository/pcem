@@ -26,7 +26,7 @@ set(PCEM_SRC_PLUGINAPI
         plugin-api/logging.c
         plugin-api/device.c
         plugin-api/plugin.c
-        plugin-api/wx-utils.cc
+        #plugin-api/wx-utils.cc
         )
 
 if(PLUGIN_ENGINE)

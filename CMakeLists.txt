@@ -40,6 +40,9 @@ message("OS Building For: ${CMAKE_SYSTEM_NAME}")
 message("System Processor: ${PCEM_CPU_TYPE}")
 message("***************************************************************")
 
+set(PCEM_GUI_MODE "SDL" CACHE STRING "GUI to be built for PCem")
+message("PCem GUI: ${PCEM_GUI_MODE}")
+
 option(PLUGIN_ENGINE "Build PCem with plugin support" OFF)
 message("Plugin Support: ${PLUGIN_ENGINE}")
 
@@ -117,15 +120,15 @@ message("***************************************************************")
 include(${CMAKE_SOURCE_DIR}/cmake/debugdefines.cmake)
 include(${CMAKE_SOURCE_DIR}/cmake/apple.cmake)
 
+find_package(Boost REQUIRED)
+include_directories(${BOOST_INCLUDE_DIRS})
+
 set(OpenGL_GL_PREFERENCE GLVND)
 find_package(SDL2 REQUIRED)
 include_directories(${SDL2_INCLUDE_DIRS})
 
 find_package(OpenAL REQUIRED)
 include_directories(${OPENAL_INCLUDE_DIR})
-
-find_package(wxWidgets REQUIRED COMPONENTS core base xrc)
-include(${wxWidgets_USE_FILE})
 
 if(USE_ALSA)
         find_package(ALSA REQUIRED)

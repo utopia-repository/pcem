@@ -22,5 +22,7 @@ include_directories(${CMAKE_CURRENT_SOURCE_DIR}/includes/private/scsi)
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/includes/private/sound)
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/includes/private/video)
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/includes/private/wx-ui)
+include_directories(${CMAKE_CURRENT_SOURCE_DIR}/includes/private/gui)
+include_directories(${CMAKE_CURRENT_SOURCE_DIR}/includes/private/sdl)
 
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/includes/public)

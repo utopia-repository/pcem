@@ -16,38 +16,44 @@ void (*_dumpregs)();
 
 FILE *pclogf = NULL;
 
-uint8_t pclog_start() {
+uint8_t pclog_start()
+{
 #ifndef RELEASE_BUILD
-	if (!pclogf) {
+	if (!pclogf)
+	{
 		char buf[1024];
 		strcpy(buf, logs_path);
 		put_backslash(buf);
 		strcat(buf, "pcem.log");
 		pclogf = fopen(buf, "wt");
 
-		if (NULL == pclogf) {
-			fprintf(stderr, "Could not open log file for writing: %s", strerror(errno));
+		if (NULL == pclogf)
+		{
+			fprintf(stderr, "Could not open log file for writing: %s", buf);
 			return 0;
 		}
 	}
 	return 1;
-#else 
+#else
 	return 0;
 #endif
 }
 
-void pclog_flush() {
+void pclog_flush()
+{
 #ifndef RELEASE_BUILD
-	if (pclogf) {
+	if (pclogf)
+	{
 		fflush(pclogf);
 	}
 #endif
-
 }
 
-void pclog_end() {
+void pclog_end()
+{
 #ifndef RELEASE_BUILD
-	if (pclogf) {
+	if (pclogf)
+	{
 		fflush(pclogf);
 		fclose(pclogf);
 		pclogf = NULL;
@@ -55,34 +61,36 @@ void pclog_end() {
 #endif
 }
 
-
-
-void error(const char *format, ...) {
+void error(const char *format, ...)
+{
 #ifndef RELEASE_BUILD
 	char buf[1024];
-	//return;
-	if (!pclog_start()) {
+	// return;
+	if (!pclog_start())
+	{
 		return;
 	}
-	//return;
+	// return;
 	va_list ap;
 	va_start(ap, format);
 	vsprintf(buf, format, ap);
 	va_end(ap);
 	fputs(buf, pclogf);
 	fputs(buf, stderr);
-	//fflush(pclogf);
+	// fflush(pclogf);
 #endif
 }
 
-void fatal(const char *format, ...) {
+void fatal(const char *format, ...)
+{
 #ifndef RELEASE_BUILD
 	char buf[1024];
-	//return;
-	if (!pclog_start()) {
+	// return;
+	if (!pclog_start())
+	{
 		return;
 	}
-	//return;
+	// return;
 	va_list ap;
 	va_start(ap, format);
 	vsprintf(buf, format, ap);
@@ -99,7 +107,8 @@ void fatal(const char *format, ...) {
 	exit(-1);
 }
 
-void warning(const char *format, ...) {
+void warning(const char *format, ...)
+{
 	char buf[1024];
 	va_list ap;
 
@@ -107,24 +116,25 @@ void warning(const char *format, ...) {
 	vsprintf(buf, format, ap);
 	va_end(ap);
 
-	//wx_messagebox(NULL, buf, "PCem", WX_MB_OK); //FIX: Fix it
+	// wx_messagebox(NULL, buf, "PCem", WX_MB_OK); //FIX: Fix it
 }
 
-void pclog(const char *format, ...) {
+void pclog(const char *format, ...)
+{
 #ifndef RELEASE_BUILD
 	char buf[1024];
-	//return;
-	if (!pclog_start()) {
+	// return;
+	if (!pclog_start())
+	{
 		return;
 	}
-	//return;
+	// return;
 	va_list ap;
 	va_start(ap, format);
 	vsprintf(buf, format, ap);
 	va_end(ap);
 	fputs(buf, pclogf);
 	fputs(buf, stdout);
-	//fflush(pclogf);
+	// fflush(pclogf);
 #endif
 }
-
