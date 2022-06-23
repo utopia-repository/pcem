@@ -1,0 +1,24 @@
+Source: pcem
+Section: otherosfs
+Priority: optional
+Maintainer: James Lu <james@overdrivenetworks.com>
+Rules-Requires-Root: no
+Build-Depends:
+ debhelper-compat (= 13),
+ libasound2-dev,
+ libopenal-dev,
+ libsdl2-dev,
+ libwxgtk3.0-gtk3-dev
+Standards-Version: 4.6.1
+Homepage: http://pcem-emulator.co.uk/
+Vcs-Browser: https://github.com/utopia-repository/pcem
+Vcs-Git: https://github.com/utopia-repository/pcem.git
+
+Package: pcem
+Architecture: amd64
+Depends:
+ ${shlibs:Depends},
+ ${misc:Depends},
+Description: IBM PC emulator for old software
+ PCem emulates IBM compatible PCs for running old software, games, and
+ operating systems.

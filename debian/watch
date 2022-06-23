@@ -1,0 +1,4 @@
+version=4
+
+https://pcem-emulator.co.uk/downloads.html \
+    files/PCemV(.*?)Linux\.tar\.gz debian uupdate
