@@ -8,7 +8,7 @@ Build-Depends:
  libasound2-dev,
  libopenal-dev,
  libsdl2-dev,
- libwxgtk3.0-gtk3-dev
+ libwxgtk3.2-dev
 Standards-Version: 4.6.1
 Homepage: http://pcem-emulator.co.uk/
 Vcs-Browser: https://github.com/utopia-repository/pcem
